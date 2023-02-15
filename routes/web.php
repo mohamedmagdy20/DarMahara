@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Dashboard\ArticlesController;
 use App\Http\Controllers\Dashboard\ServicesController;
+use App\Http\Controllers\Dashboard\HomeController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,7 @@ Route::prefix('admin')->group(function () {
     Auth::routes();
 
     Route::middleware('auth')->group(function () {
+        Route::get('/',[HomeController::class,'index'])->name('admin.index');
         Route::get('/services', [ServicesController::class, 'index'])->name('admin.services.show');
         Route::get('/services/add', [ServicesController::class, 'add'])->name('admin.services.add');
         Route::post('/services/store', [ServicesController::class, 'store'])->name('admin.services.store');
