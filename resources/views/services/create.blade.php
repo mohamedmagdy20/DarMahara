@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section("content")
 <style>
 input[type=text], input[type=file] {
