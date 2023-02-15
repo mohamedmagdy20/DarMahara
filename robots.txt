@@ -1,0 +1,7 @@
+User-agent:*
+Disallow:
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.daralmhara.com/sitemap.xml
