@@ -1,91 +1,139 @@
-@extends('layouts/app')
-@section("content")
-<style>
-input[type=text], input[type=file] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div.form-container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+@extends('layouts.admin.app')
+@section("admin")
+<div class="page-content">
+  <div class="container-fluid">
+     <!-- start page title -->
+     <div class="row">
+      <div class="col-12">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+              <h4 class="mb-sm-0">اضافه مقال</h4>
+          </div>
+      </div>
+  </div>             
+  <div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
   
-}
-</style>
-<body>
+              <h4 class="card-title">اضافة مقال </h4>
+              
+              <form method="post" action="{{ route('admin.articles.store') }}"  class="needs-validation" enctype="multipart/form-data"  novalidate >
+                  @csrf
+  
+              <div class="row mb-3">
+                  <label for="example-text-input" class="col-sm-1 col-form-label">اسم المقال</label>
+                  <div class="col-sm-11">
+                      <input name="name" class="form-control" type="text" id="example-text-input" placeholder="برجاء ادخال الاسم   " required>
+                      @error('name')
+                      <span class="text-danger"> {{ $message }} </span>
+                      @enderror
+                  </div>
+              </div>
 
 
-<div class=" container">
-    <h3>Create New Article</h3>
-    <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <label for="fname">Name</label>
-        <input type="text" name="name" placeholder="Article name.." value="{{ old('name') }}">
-         @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+              <div class="row mb-3">
+                <label for="image" class="col-sm-1 col-form-label">صوره</label>
+                <div class="col-sm-11">
+                    <input name="image" class="form-control" type="file" id="image"  required>
+                    @error('image')
+                    <span class="text-danger"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+            
 
-        <label for="fname">Image</label>
-        <input type="file" name="image">
-         @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            <div class="row mb-3">
+              <label for="image_alt" class="col-sm-1 col-form-label">عنوان الصوره</label>
+              <div class="col-sm-11">
+                  <input name="image_alt"  class="form-control" type="text" id="image_alt"  required>
+                  @error('image_alt')
+                  <span class="text-danger"> {{ $message }} </span>
+                  @enderror
+              </div>
+          </div>
+
+          
+          <div class="row mb-3">
+            <label for="text-area" class="col-sm-1 col-form-label">الوصف</label>
+            <div class="col-sm-11">
+              <textarea name="description" id="text-area" cols="30" rows="10"></textarea>
+                @error('description')
+                <span class="text-danger"> {{ $message }} </span>
+                @enderror
+            </div>
+        </div>
+
+        
+        <div class="row mb-3">
+          <label for="short_desc" class="col-sm-1 col-form-label">وصف قصير</label>
+          <div class="col-sm-11">
+           <input type="text" name="short_description" id="short_decs"  class="form-control">
+              @error('short_description')
+              <span class="text-danger"> {{ $message }} </span>
+              @enderror
+          </div>
+      </div>
+
+      
+      <div class="row mb-3">
+        <label for="meta_title" class="col-sm-1 col-form-label">Meta Title</label>
+        <div class="col-sm-11">
+         <input type="text" name="meta_title"  id="meta_title"  class="form-control">
+            @error('meta_title')
+            <span class="text-danger"> {{ $message }} </span>
+            @enderror
+        </div>
+    </div>
 
 
-        <label for="lname">Image Alt</label>
-        <input type="text" name="image_alt" placeholder="Article Image Alt.."  value="{{ old('image_alt') }}">
-        @error('image_alt') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    <div class="row mb-3">
+      <label for="meta_description" class="col-sm-1 col-form-label">Meta Description</label>
+      <textarea name="meta_description"  id="meta_description" class="form-control" cols="30" rows="10"></textarea>
+      <div class="col-sm-11">
 
+          @error('meta_description')
+          <span class="text-danger"> {{ $message }} </span>
+          @enderror
+      </div>
+  </div>
 
-        <label for="lname">Description</label>
-        <input type="text" name="description" placeholder="Article Description.." value="{{ old('description') }}">
-        @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-
-        <label for="lname">Short Description</label>
-        <input type="text" name="short_description" placeholder="Article Short Description.." value="{{ old('short_description') }}">
-        @error('short_description') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-
-        <label for="lname">Meta Title</label>
-        <input type="text" name="meta_title" placeholder="Article Meta Title.."  value="{{ old('meta_title') }}">
-        @error('meta_title') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-
-        <label for="lname">Meta Description</label>
-        <input type="text" name="meta_description" placeholder="Article Meta Description.." value="{{ old('meta_description') }}">
-        @error('meta_description') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-
-        <label for="lname">Keywords</label>
-        <input type="text" name="keywords" placeholder="Keywords Seperated by ," value="{{ old('keywords') }}">
-        @error('keywords') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-
-        <label for="lname">Url</label>
-        <input type="text" name="url" placeholder="Your last name.." value="{{ old('url') }}">
-        @error('url') <div class="invalid-feedback">{{ $message }}</div> @enderror
-
-            <input type="submit" value="Submit">
-    </form>
+  <div class="row mb-3">
+    <label for="input-tags" class="col-sm-1 col-form-label">Keywords</label>
+    <div class="col-sm-11">
+     <input type="text" autocomplete="off"  name="keywords"  id="input-tags"  class="form-control" >
+        @error('keywords')
+        <span class="text-danger"> {{ $message }} </span>
+        @enderror
+    </div>
 </div>
 
+
+    <div class="row mb-3">
+      <label for="url" class="col-sm-1 col-form-label">Url</label>
+      <div class="col-sm-11">
+       <input type="url" name="url"  id="url"  class="form-control" >
+          @error('url')
+          <span class="text-danger"> {{ $message }} </span>
+          @enderror
+      </div>
+    </div>
+
+  
+              <!-- end row -->
+  
+  <input type="submit" class="btn btn-info waves-effect waves-light validate" value="اضافه">
+              </form>
+               
+             
+             
+          </div>
+      </div>
+  </div> <!-- end col -->
+  </div>
+   
+  
+  
+  </div>
+  </div>
 @endsection
 

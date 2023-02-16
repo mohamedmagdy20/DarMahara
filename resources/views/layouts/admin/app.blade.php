@@ -30,10 +30,12 @@
         <link href="{{ asset('assets/backend/css/app.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
         {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" > --}}
+        <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"> 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.bootstrap3.min.css" integrity="sha512-cNefX8/Vd+UJbeYHzwdRZYEHI1K5Wj+gCdaK4R767/8SFhqMaHHg881hZONXpq4ainln9e330TalryDPKysm2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body data-topbar="dark">
@@ -88,11 +90,11 @@
            {{-- <script src="{{ asset('assets/backend/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
    
            <!-- jquery.vectormap map -->
-           <script src="{{ asset('assets/backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-           <script src="{{ asset('assets/backend/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}"></script>
+           {{-- <script src="{{ asset('assets/backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script> --}}
+           {{-- <script src="{{ asset('assets/backend/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}"></script> --}}
    
         <!-- App js -->
-        <script src="{{ asset('assets/backend/js/pages/dashboard.init.js') }}"></script>
+        {{-- <script src="{{ asset('assets/backend/js/pages/dashboard.init.js') }}"></script> --}}
         <script src="{{ asset('assets/backend/js/app.js') }}"></script>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -126,7 +128,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js" integrity="sha512-eV68QXP3t5Jbsf18jfqT8xclEJSGvSK5uClUuqayUbF5IRK8e2/VSXIFHzEoBnNcvLBkHngnnd3CY7AFpUhF7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- init js -->
         <script src="{{ asset('assets/backend/js/pages/form-editor.init.js') }} "></script>
-
+        <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
          <!-- Required datatable js -->
         {{-- <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script> --}}
@@ -135,8 +137,9 @@
         {{-- <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script> --}}
         {{-- <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script> --}}
         {{-- <script src="{{asset('backend/assets/libs/pdfmake/build/pdfmake.min.js')}}"></script> --}}
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script src="{{ asset('assets/backend/js/code.js') }}"></script>
 <script src="{{ asset('assets/backend/js/validate.min.js') }}"></script>
@@ -144,11 +147,20 @@
  
 @yield('script')
 <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
-
+<script>
+    CKEDITOR.replace( 'text-area');
+</script>
 
 <script>
-       $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+    $(function () {
+      $("#selectize-tags-selectized").selectize(options);
+    });
+    </script>
+<script>
+    new TomSelect("#input-tags",{
+	persist: false,
+	createOnBlur: true,
+	create: true
     });
 </script>
 

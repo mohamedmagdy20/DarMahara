@@ -6,7 +6,7 @@ use App\Article;
 use App\Http\Controllers\Controller;
 use App\Traits\CanUploadImage;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ArticlesController extends Controller
 {
     use CanUploadImage;
@@ -25,6 +25,7 @@ class ArticlesController extends Controller
 
     public function store(Request $request)
     {
+    // return $request->all();
         $request->validate([
             'name' => "Required|string",
             'description' => "Required|string",
@@ -34,12 +35,20 @@ class ArticlesController extends Controller
             'meta_description' => "Required|string",
             'keywords' => "Required|string",
             'url' => "Required|string",
+            'image'=>'image'
         ]);
 
         // Upload Image if Exists
-        if ($request->hasFile('image')) {
-            $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/articles'));
+        if ($request->hasfile('image')) {
+            // return "1235";
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'uploads/articles/';
+            $filePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
         }
+
+
 
         $url = str_replace([' ', '_'], "-", $request->url);
 
