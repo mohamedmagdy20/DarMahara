@@ -18,20 +18,14 @@
                     </a>
                 </li>
 
-               
-    <li>
-        <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="ri-mail-send-line"></i>
-            <span>cc</span>
-        </a>
-        <ul class="sub-menu" aria-expanded="false">
-            <li><a href="">@lang('lang.show') @lang('lang.employees')</a></li>
-            <li><a href="">@lang('lang.show') @lang('lang.roles')</a></li>
-            <li><a href="">@lang('lang.show') @lang('lang.driver')</a></li>
-            <li><a href="">@lang('lang.show') @lang('lang.shipment_agent')</a></li>
-        
-        </ul>
-    </li>        
+
+                <li>
+                    <a href="{{route('admin.index')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span>لوحه التحكم</span>
+                    </a>
+                </li>
+
 
 
                
