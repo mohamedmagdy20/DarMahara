@@ -42,7 +42,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/articles/add', [ArticlesController::class, 'add'])->name('admin.articles.add');
         Route::post('/articles/store', [ArticlesController::class, 'store'])->name('admin.articles.store');
         Route::get('/articles/edit/{article_id}', [ArticlesController::class, 'edit'])->name('admin.articles.edit');
-        Route::post('/articles/update', [ArticlesController::class, 'update'])->name('admin.articles.update');
+        Route::post('/articles/update}', [ArticlesController::class, 'update'])->name('admin.articles.update');
         Route::get('/articles/delete/{artical_id}', [ArticlesController::class, 'delete'])->name('admin.articles.delete');
     });
 });

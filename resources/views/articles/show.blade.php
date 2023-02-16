@@ -46,8 +46,8 @@
             <td> <a
                 href="{{ env('APP_URL') . 'articles/' . $article->url }}">{{ asset('') . $article->url }}</a> </td>        
             <td>
-                <a href="" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
-                <a href="" class="btn btn-warning sm text-white" title="Permission">  <i class="fas fa-eye"></i> </a>
+                <a href="{{route('admin.articles.edit',$article->id)}}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                <a href="{{route('admin.articles.delete',$article->id)}}" class="btn btn-danger sm text-white" title="Permission">  <i class="fas fa-trash"></i> </a>
             </td>
            
         </tr>
