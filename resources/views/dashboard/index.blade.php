@@ -30,7 +30,7 @@
         <div class="d-flex">
             <div class="flex-grow-1">
                 <p class="text-truncate font-size-14 mb-2">المقالات</p>
-                <h4 class="mb-2">20</h4>
+                <h4 class="mb-2">5</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -84,8 +84,8 @@
     <div class="card-body">
         <div class="d-flex">
             <div class="flex-grow-1">
-                <p class="text-truncate font-size-14 mb-2">السائقين</p>
-                <h4 class="mb-2">7</h4>
+                <p class="text-truncate font-size-14 mb-2">الخدمات</p>
+                <h4 class="mb-2">4</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-success rounded-3">

@@ -40,6 +40,13 @@
                     </a>
                 </li>
                
+                <li>
+                    <a href="{{route('admin.discount')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span style="font-size:15px !important" >روابط التواصل</span>
+                    </a>
+                </li>
+               
                
 <li>
     <a href="{{route('logout')}}" class="waves-effect">

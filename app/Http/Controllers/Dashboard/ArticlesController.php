@@ -121,7 +121,7 @@ class ArticlesController extends Controller
         );
 
         // return redirect();
-        redirect(route('admin.articles.show'))->with('success','تم التعديل بنجاح');
+        redirect()->route('admin.articles.show')->with('success','تم التعديل بنجاح');
     }
 
 
