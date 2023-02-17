@@ -15,12 +15,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- DataTables -->
-        <link href="{{ asset('assets/backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <link href="{{ asset('assets/backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" /> --}}
         {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
 
 
         <!-- Responsive datatable examples -->
-        <link href="{{ asset('assets/backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />  
+        {{-- <link href="{{ asset('assets/backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />   --}}
         
         <!-- Bootstrap Css -->
         <link href="{{ asset('assets/backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -96,33 +96,18 @@
         <!-- App js -->
         {{-- <script src="{{ asset('assets/backend/js/pages/dashboard.init.js') }}"></script> --}}
         <script src="{{ asset('assets/backend/js/app.js') }}"></script>
-
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+        <script>
+            $(document).ready(function() {
+                toastr.options.timeOut = 10000;
+                @if (Session::has('error'))
+                    toastr.error('{{ Session::get('error') }}');
+                @elseif (Session::has('success'))
+                    toastr.success('{{ Session::get('success') }}');
+                @endif
+            });
+        </script>
         
-<script>
- @if(Session::has('message'))
- var type = "{{ Session::get('alert-type','info') }}"
- switch(type){
-    case 'info':
-    toastr.info(" {{ Session::get('message') }} ");
-    break;
-
-    case 'success':
-    toastr.success(" {{ Session::get('message') }} ");
-    break;
-
-    case 'warning':
-    toastr.warning(" {{ Session::get('message') }} ");
-    break;
-
-    case 'error':
-    toastr.error(" {{ Session::get('message') }} ");
-    break; 
- }
- @endif 
-</script>
-
         <!--tinymce js-->
         {{-- <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }} "></script> --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js" integrity="sha512-eV68QXP3t5Jbsf18jfqT8xclEJSGvSK5uClUuqayUbF5IRK8e2/VSXIFHzEoBnNcvLBkHngnnd3CY7AFpUhF7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -134,8 +119,8 @@
         <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script> --}}
 
             <!-- Datatable init js -->
-        {{-- <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script> --}}
-        {{-- <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('backend/js/pages/datatables.init.js') }}"></script> --}}
+        {{-- <script src="{{ asset('assets/backend/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script> --}}
         {{-- <script src="{{asset('backend/assets/libs/pdfmake/build/pdfmake.min.js')}}"></script> --}}
         
         <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
@@ -151,11 +136,12 @@
     CKEDITOR.replace( 'text-area');
 </script>
 
-<script>
+{{-- <script>
     $(function () {
       $("#selectize-tags-selectized").selectize(options);
     });
-    </script>
+    </script> --}}
+
 <script>
     new TomSelect("#input-tags",{
 	persist: false,

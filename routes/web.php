@@ -3,7 +3,7 @@
 use App\Http\Controllers\Dashboard\ArticlesController;
 use App\Http\Controllers\Dashboard\ServicesController;
 use App\Http\Controllers\Dashboard\HomeController;
-
+use App\Http\Controllers\Dashboard\DiscountController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,5 +44,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/articles/edit/{article_id}', [ArticlesController::class, 'edit'])->name('admin.articles.edit');
         Route::post('/articles/update}', [ArticlesController::class, 'update'])->name('admin.articles.update');
         Route::get('/articles/delete/{artical_id}', [ArticlesController::class, 'delete'])->name('admin.articles.delete');
+
+        Route::get('/discount',[DiscountController::class,'index'])->name('admin.discount');
+        Route::get('/discount/edit/{id}',[DiscountController::class,'edit'])->name('admin.discount.edit');
+        Route::post('/discount/update',[DiscountController::class,'update'])->name('admin.discount.update');
+        
     });
 });

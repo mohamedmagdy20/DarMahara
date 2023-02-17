@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use App\Traits\CanUploadImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ServicesController extends Controller
 {
@@ -32,11 +33,18 @@ class ServicesController extends Controller
             'meta_description' => "Required|string",
             'keywords' => "Required|string",
             'url' => "Required|string",
+            'image'=>'image'
         ]);
 
         // Upload Image if Exists
         if ($request->hasFile('image')) {
-            $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/services'));
+            // $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/services'));
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'uploads/services/';
+            $filePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+
         }
 
         $url = str_replace([' ', '_'], "-", $request->url);
@@ -52,7 +60,7 @@ class ServicesController extends Controller
             'url' => $url,
         ] + ["image"  =>  $filePath ?? ""]);
 
-        return redirect(route('admin.services.show'));
+        return redirect()->back()->with('success','تم اضافه المقال');
     }
 
     public function edit($service_id) {
@@ -71,13 +79,24 @@ class ServicesController extends Controller
             'meta_description' => "Required|string",
             'keywords' => "Required|string",
             'url' => "Required|string",
+            'image'=>'image'
         ]);
 
         $service = Service::findOrFail($request->id);
 
         // Upload Image if Exists
         if ($request->hasFile('image')) {
-            $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/services'));
+            // $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/services'));
+         //delete Image First 
+            $oldImagePath = public_path().'/uploads/services/'. $service->image;
+            unlink($oldImagePath);
+            
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'uploads/articles/';
+            $filePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+        
         }
 
         $url = str_replace([' ', '_'], "-", $request->url);
@@ -94,7 +113,7 @@ class ServicesController extends Controller
             ] + ["image"  =>  $filePath ?? $service->image]
         );
 
-        return redirect(route('admin.services.show'));
+        return redirect(route('admin.services.show'))->with('success','تم التعديل بنجاح');
     }
 
 
@@ -102,7 +121,7 @@ class ServicesController extends Controller
         $service = Service::findOrFail($service_id);
         $service->delete();
 
-        return redirect(route('admin.services.show'));
+        return redirect(route('admin.services.show'))->with('تم الحذف بنجاح');
     }
 
 }

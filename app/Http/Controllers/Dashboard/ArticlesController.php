@@ -63,7 +63,8 @@ class ArticlesController extends Controller
             'url' => $url,
         ] + ["image"  =>  $filePath ?? ""]);
 
-        return redirect(route('admin.articles.show'));
+        // return redirect(route('admin.articles.show'));
+        redirect()->back()->with('success','تم اضافة المقال');
     }
 
     public function edit($article_id)
@@ -84,13 +85,24 @@ class ArticlesController extends Controller
             'meta_description' => "Required|string",
             'keywords' => "Required|string",
             'url' => "Required|string",
+            'image'=>'image'
         ]);
 
         $article = Article::findOrFail($request->id);
 
         // Upload Image if Exists
+
+        
         if ($request->hasFile('image')) {
-            $filePath = $this->uploadImage($request, 'image', public_path('../assets/uploads/articles'));
+            //delete Image First 
+            $oldImagePath = public_path().'/uploads/articles/'. $article->image;
+            unlink($oldImagePath);
+
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'uploads/articles/';
+            $filePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
         }
 
         $url = str_replace([' ', '_'], "-", $request->url);
@@ -108,7 +120,8 @@ class ArticlesController extends Controller
             ] + ["image"  =>  $filePath ?? $article->image]
         );
 
-        return redirect(route('admin.articles.show'));
+        // return redirect();
+        redirect(route('admin.articles.show'))->with('success','تم التعديل بنجاح');
     }
 
 
@@ -117,6 +130,7 @@ class ArticlesController extends Controller
         $article = article::findOrFail($article_id);
         $article->delete();
 
-        return redirect(route('admin.articles.show'));
+        return redirect(route('admin.articles.show'))->with('success','تم الحذف بنجاح');
     }
+
 }

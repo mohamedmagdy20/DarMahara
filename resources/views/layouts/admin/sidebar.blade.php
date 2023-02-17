@@ -14,7 +14,7 @@
                 <li>
                     <a href="{{route('admin.index')}}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
-                        <span class="h5">لوحه التحكم</span>
+                        <span style="font-size:15px !important" >لوحه التحكم</span>
                     </a>
                 </li>
 
@@ -22,12 +22,24 @@
                 <li>
                     <a href="{{route('admin.articles.show')}}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
-                        <span class="h5">المقالات</span>
+                        <span style="font-size:15px !important" class="">المقالات</span>
                     </a>
                 </li>
 
-
-
+                <li>
+                    <a href="{{route('admin.services.show')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span style="font-size:15px !important" >الخدمات</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="{{route('admin.discount')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span style="font-size:15px !important" >الخصومات</span>
+                    </a>
+                </li>
+               
                
 <li>
     <a href="{{route('logout')}}" class="waves-effect">
