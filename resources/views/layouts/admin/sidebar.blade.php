@@ -41,15 +41,22 @@
                 </li>
                
                 <li>
-                    <a href="{{route('admin.discount')}}" class="waves-effect">
+                    <a href="{{route('admin.social.index')}}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span style="font-size:15px !important" >روابط التواصل</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('admin.about.index')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span style="font-size:15px !important" >عن الشركة</span>
                     </a>
                 </li>
                
                
 <li>
-    <a href="{{route('logout')}}" class="waves-effect">
+    <a href="{{route('logout')}}" class="waves-effect" >
             <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
             <span class="text-danger h5">خروج</span>
         

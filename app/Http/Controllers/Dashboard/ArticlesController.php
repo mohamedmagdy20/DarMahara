@@ -63,8 +63,8 @@ class ArticlesController extends Controller
             'url' => $url,
         ] + ["image"  =>  $filePath ?? ""]);
 
-        // return redirect(route('admin.articles.show'));
-        redirect()->back()->with('success','تم اضافة المقال');
+        return redirect(route('admin.articles.show'))->with('success','تم اضافة المقال');
+        // redirect()->back()->with('success','تم اضافة المقال');
     }
 
     public function edit($article_id)
@@ -127,7 +127,11 @@ class ArticlesController extends Controller
 
     public function delete($article_id)
     {
+
         $article = article::findOrFail($article_id);
+        $oldImagePath = public_path().'/uploads/articles/'. $article->image;
+        // return $oldImagePath;
+        unlink($oldImagePath);
         $article->delete();
 
         return redirect(route('admin.articles.show'))->with('success','تم الحذف بنجاح');

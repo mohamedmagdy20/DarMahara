@@ -4,6 +4,10 @@ use App\Http\Controllers\Dashboard\ArticlesController;
 use App\Http\Controllers\Dashboard\ServicesController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DiscountController;
+use App\Http\Controllers\Dashboard\AboutController;
+use App\Http\Controllers\Dashboard\SocialMediaController;
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +53,17 @@ Route::prefix('admin')->group(function () {
         Route::get('/discount/edit/{id}',[DiscountController::class,'edit'])->name('admin.discount.edit');
         Route::post('/discount/update',[DiscountController::class,'update'])->name('admin.discount.update');
         
+
+        Route::get('/about',[AboutController::class,'index'])->name('admin.about.index');
+        Route::get('/about/edit/{id}',[AboutController::class,'edit'])->name('admin.about.edit');
+        Route::post('/about/update',[AboutController::class,'update'])->name('admin.about.update');
+
+
+        Route::get('/social',[SocialMediaController::class,'index'])->name('admin.social.index');
+        Route::get('/social/create',[SocialMediaController::class,'create'])->name('admin.social.create');
+        Route::get('/social/edit/{id}',[SocialMediaController::class,'edit'])->name('admin.social.edit');
+        Route::post('/social/store',[SocialMediaController::class,'store'])->name('admin.social.store');
+        Route::post('/social/update',[SocialMediaController::class,'update'])->name('admin.social.update');
+        Route::get('/social/delete/{id}',[SocialMediaController::class,'delete'])->name('admin.social.delete');
     });
 });
