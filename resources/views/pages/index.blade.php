@@ -171,6 +171,8 @@
                 <h2 class="fw-xbold mb-5">خدمات دار المهارة</h2>
             </div>
             <div class="row justify-content-center">
+            @foreach ($services as $service )
+             
                 <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
                     <div
                         class="feature-block-one wow fadeInUp animated animated h-100"
@@ -182,130 +184,21 @@
                                 <img
                                     class="mb-3"
                                     width="60"
-                                    src="{{asset('assets/images/icons/villa.svg')}}"
-                                    alt="تنظيف الفيلات الجديدة"
+                                    src="{{asset('assets/images/icons/'.$service->icon_image)}}"
+                                    alt="{{$service->icon_image_alt}}"
                                 />
                             </div>
-                            <h4 class="fw-bold">تنظيف الفيلات الجديدة</h4>
+                            <h4 class="fw-bold">{{$service->name}}</h4>
                             <p class="fs-md">
-                                نقدم أفضل خدمة تنظيف للفلل الجديدة وبأعلى جودة
+                                {{$service->short_description }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
-                    <div
-                        class="feature-block-one wow fadeInUp animated animated h-100"
-                        data-wow-delay="300ms"
-                        data-wow-duration="1500ms"
-                    >
-                        <div class="inner-box">
-                            <div class="icon">
-                                <img
-                                    class="mb-3"
-                                    width="60"
-                                    src="{{asset('assets/images/icons/prayer.svg')}}"
-                                    alt="غسيل السجاد"
-                                />
-                            </div>
-                            <h4 class="fw-bold">غسيل السجاد</h4>
-                            <p class="fs-md">
-                                تنظيف جميع أنواع السجاد، الكنب، الستائر، الموكيت والأثاث
-                                بأعلى جودة
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
-                    <div
-                        class="feature-block-one wow fadeInUp animated animated h-100"
-                        data-wow-delay="400ms"
-                        data-wow-duration="1500ms"
-                    >
-                        <div class="inner-box">
-                            <div class="icon">
-                                <img
-                                    class="mb-3"
-                                    width="60"
-                                    src="{{asset('assets/images/icons/insect.svg')}}"
-                                    alt="مكافحة الحشرات"
-                                />
-                            </div>
-                            <h4 class="fw-bold">مكافحة الحشرات</h4>
-                            <p class="fs-md">
-                                نقوم بمكافحة والقضاء على جميع أنواع الحشرات والقوارض،
-                                الصراصير، الرباصي،
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
-                    <div
-                        class="feature-block-one wow fadeInUp animated animated h-100"
-                        data-wow-delay="600ms"
-                        data-wow-duration="1500ms"
-                    >
-                        <div class="inner-box">
-                            <div class="icon">
-                                <img
-                                    class="mb-3"
-                                    width="60"
-                                    src="{{asset('assets/images/icons/tank.svg')}}"
-                                    alt="غسيل خزان المياه"
-                                />
-                            </div>
-                            <h4 class="fw-bold">غسيل خزان المياه</h4>
-                            <p class="fs-md">
-                                نقوم بغسيل وتعقيم خزان المياه. لدينا أحدث أجهزة التنظيف .
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
-                    <div
-                        class="feature-block-one wow fadeInUp animated animated h-100"
-                        data-wow-delay="600ms"
-                        data-wow-duration="1500ms"
-                    >
-                        <div class="inner-box">
-                            <div class="icon">
-                                <img
-                                    class="mb-3"
-                                    width="60"
-                                    src="{{asset('assets/images/icons/marble.svg')}}"
-                                    alt="جلى الرخام"
-                                />
-                            </div>
-                            <h4 class="fw-bold">جلى الرخام</h4>
-                            <p class="fs-md">
-                                جلي جميع أنواع الرخام. لدينا أحدث أجهزة التنظيف
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 feature-block mb-4">
-                    <div
-                        class="feature-block-one wow fadeInUp animated animated h-100"
-                        data-wow-delay="600ms"
-                        data-wow-duration="1500ms"
-                    >
-                        <div class="inner-box">
-                            <div class="icon">
-                                <img
-                                    class="mb-3"
-                                    width="60"
-                                    src="{{asset('assets/images/icons/ant.svg')}}"
-                                    alt="مكافحة النمل الأبيض"
-                                />
-                            </div>
-                            <h4 class="fw-bold">مكافحة النمل الأبيض</h4>
-                            <p class="fs-md">
-                                نقوم بمكافحة النمل الأبيض قبل البناء لتفادي ظهورها بعد ذلك،
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+             
             </div>
+            
         </div>
     </section>
     <!-- feature-section end -->

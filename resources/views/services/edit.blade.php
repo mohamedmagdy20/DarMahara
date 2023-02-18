@@ -42,7 +42,7 @@
             </div>
 
             <div class="m-auto w-50 p-2">
-                <img src="{{url('uploads/services'.'/'.$service->icon_image)}}" class="w-100" alt="{{$service->icon_image_alt}}">
+                <img src="{{url('assets/images'.'/icons/'.$service->icon_image)}}" class="w-100" alt="{{$service->icon_image_alt}}">
             </div>
             
 

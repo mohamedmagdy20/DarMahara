@@ -68,7 +68,7 @@ class ServicesController extends Controller
             'keywords' => $request->keywords,
             'icon_image_alt'=>$request->icon_image_alt,
             'url' => $url,
-        ] + ["image"  =>  $filePath ?? "",'icon_image'=>$iconfilePath] );
+        ] + ["image"  =>  $filePath ?? "",'icon_image'=>$iconfilePath ?? null] );
 
         return redirect()->back()->with('success','تم اضافه المقال');
     }
@@ -111,9 +111,9 @@ class ServicesController extends Controller
 
         if($request->hasfile('icon_image'))
         {
-            $oldiconImagePath = public_path().'/assets/images/icons/'. $service->icon_image;
-            unlink($oldiconImagePath);
-            $image = $request->file('image');
+            // $oldiconImagePath = public_path().'/assets/images/icons/'. $service->icon_image;
+            // unlink($oldiconImagePath);
+            $image = $request->file('icon_image');
             $name = Str::slug($request->input('name')).'_'.time();
             $folder = 'assets/images/icons/';
             $iconfilePath = $name. '.' . $image->getClientOriginalExtension();
@@ -132,7 +132,7 @@ class ServicesController extends Controller
             'meta_description' => $request->meta_description,
             'keywords' => $request->keywords,
             'url' => $url,
-            ] + ["image"  =>  $filePath ?? $service->image,'icon_image'=>$iconfilePath]
+            ] + ["image"  =>  $filePath ?? $service->image,'icon_image'=>$iconfilePath ?? $service->icon_image ]
         );
 
         return redirect(route('admin.services.show'))->with('success','تم التعديل بنجاح');
@@ -154,7 +154,7 @@ class ServicesController extends Controller
             $oldiconImagePath = public_path().'/assets/images/icons/'. $service->icon_image;
             unlink($oldiconImagePath);
         }
-        
+       
         $service->delete();
 
         return redirect(route('admin.services.show'))->with('تم الحذف بنجاح');
