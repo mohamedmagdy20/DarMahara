@@ -23,7 +23,7 @@
     <section
         class="page-title style-two centred"
         style="
-          background-image: url({{ asset('assets/images/cleaning-articles.webp') }});
+          background-image: url({{ url('assets/images/cleaning-articles.webp') }});
           background-repeat: no-repeat;
           background-size: cover;
         "
@@ -50,12 +50,12 @@
                     <div class="article-details-content text-right">
                         <div class="content-one">
                             <figure class="image-box">
-                                <img class="img img-fluid max-h-fitted-400" src="{{ asset('assets/uploads/articles'."/".$article->image) }}" alt="{{ $article->image_alt }}" />
+                                <img class="img img-fluid max-h-fitted-400" src="{{ asset('uploads/articles'."/".$article->image) }}" alt="{{ $article->image_alt }}" />
                             </figure>
                             <h2 class="mb-3">{{ $article->name }}</h2>
                             <div class="text">
                                 <p>
-                                    {{ $article->description }}
+                                    {!! $article->description !!}
                                 </p>
                             </div>
                             <div class="action d-flex text-right mt-5">
@@ -95,7 +95,7 @@
                             <div class="image-box">
                                 <figure class="image" style="width: 100%; height: 200px; object-fit: contain">
                                     <a href="{{route('article', $article->url)}}">
-                                        <img src="{{asset('assets/uploads/articles'."/".$article->image)}}" alt="{{$article->alt_image}}"/>
+                                        <img src="{{asset('uploads/articles'."/".$article->image)}}" alt="{{$article->alt_image}}"/>
                                     </a>
                                 </figure>
                             </div>

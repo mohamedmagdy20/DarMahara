@@ -29,10 +29,31 @@
                       @enderror
                   </div>
               </div>
-
+              
 
               <div class="row mb-3">
-                <label for="image" class="col-sm-1 col-form-label">صوره</label>
+                <label for="image" class="col-sm-1 col-form-label">صوره 1 </label>
+                <div class="col-sm-11">
+                    <input name="icon_image" class="form-control" type="file" id="image"  required>
+                    @error('icon_image')
+                    <span class="text-danger"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+            
+
+            <div class="row mb-3">
+              <label for="image_alt" class="col-sm-1 col-form-label">عنوان الصوره 1</label>
+              <div class="col-sm-11">
+                  <input name="icon_image_alt"  class="form-control" type="text" id="image_alt"  required>
+                  @error('icon_image_alt')
+                  <span class="text-danger"> {{ $message }} </span>
+                  @enderror
+              </div>
+          </div>
+
+              <div class="row mb-3">
+                <label for="image" class="col-sm-1 col-form-label">صوره 2</label>
                 <div class="col-sm-11">
                     <input name="image" class="form-control" type="file" id="image"  required>
                     @error('image')
@@ -43,7 +64,7 @@
             
 
             <div class="row mb-3">
-              <label for="image_alt" class="col-sm-1 col-form-label">عنوان الصوره</label>
+              <label for="image_alt" class="col-sm-1 col-form-label">عنوان الصوره 2</label>
               <div class="col-sm-11">
                   <input name="image_alt"  class="form-control" type="text" id="image_alt"  required>
                   @error('image_alt')

@@ -50,12 +50,12 @@
                     <div class="service-details-content text-right">
                         <div class="content-one">
                             <figure class="image-box">
-                                <img class="img img-fluid max-h-fitted-400" src="{{ $service->image }}" alt="{{ $service->image_alt }}" />
+                                <img class="img img-fluid max-h-fitted-400" src="{{url('uploads/services'.'/'.$service->image)}}" alt="{{ $service->image_alt }}" />
                             </figure>
                             <h2 class="mb-3">{{ $service->name }}</h2>
                             <div class="text">
                                 <p>
-                                    {{ $service->description }}
+                                    {!! $service->description !!}
                                 </p>
                             </div>
                             <div class="action d-flex text-right mt-5">
@@ -98,7 +98,7 @@
                             <div class="inner-box">
                                 <figure class="image-box">
                                     <a href="{{ '/services/' . $service->url }}"
-                                    ><img src="{{ $service->image }}" alt="{{ $service->image_alt }}"
+                                    ><img src="{{url('uploads/services'.'/'.$service->image)}}" alt="{{ $service->image_alt }}"
                                         /></a>
                                 </figure>
                                 <div class="lower-content">

@@ -57,11 +57,11 @@
 </div>
 <div class="boxed_wrapper blue-color rtl">
 
-    @include('layout.header')
+    @include('layout.header',['icons'=>$icons,'discount'=>$discount])
 
     @yield('page_content')
 
-    @include('layout.footer')
+    @include('layout.footer',['about'=>$about])
 
     <!--Scroll to top-->
     <button class="scroll-top scroll-to-target" data-target="html">

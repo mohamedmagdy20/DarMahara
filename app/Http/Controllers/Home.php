@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Message;
 use App\Service;
+use App\About;
+use App\SocialMedia;
+use App\Discounts;
 use Illuminate\Http\Request;
 
 class Home extends Controller
@@ -12,7 +15,10 @@ class Home extends Controller
     public function index(){
         $services = Service::all();
         $articles = Article::all();
-        return view('pages.index' , compact('services', 'articles'));
+        $about = About::first();
+        $icons = SocialMedia::all();
+        $discount = Discounts::first();
+        return view('pages.index' , compact('services', 'articles','about','icons','discount'));
     }
 
     public function addMessage(Request $request){

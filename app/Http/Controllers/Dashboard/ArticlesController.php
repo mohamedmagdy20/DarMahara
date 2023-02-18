@@ -121,7 +121,7 @@ class ArticlesController extends Controller
         );
 
         // return redirect();
-        redirect()->route('admin.articles.show')->with('success','تم التعديل بنجاح');
+        return redirect()->route('admin.articles.show')->with('success','تم التعديل بنجاح');
     }
 
 
@@ -134,7 +134,7 @@ class ArticlesController extends Controller
         unlink($oldImagePath);
         $article->delete();
 
-        return redirect(route('admin.articles.show'))->with('success','تم الحذف بنجاح');
+        return redirect()->route('admin.articles.show')->with('success','تم الحذف بنجاح');
     }
 
 }

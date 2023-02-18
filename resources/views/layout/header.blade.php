@@ -66,33 +66,19 @@
                 <div class="page-header-mobile-info-toggle"></div>
                 <div class="social-links">
                     <ul class="social-list clearfix">
+                        @foreach ($icons as $s )
                         <li>
-                            <a href="https://instagram.com/daralmhara?igshid=ZDdkNTZiNTM="
+                            <a href="{{$s->link}}"
                                target="_blank"
                             ><img
                                     width="30"
-                                    src="{{asset('assets/images/icons/facebook.svg')}}"
-                                    alt="Facebook"
+                                    src="{{asset('assets/images/icons/'.$s->image)}}"
+                                    alt="{{$s->image_alt}}"
                                 /></a>
                         </li>
-                        <li>
-                            <a href="https://wa.me/0097470338000"
-                               target="_blank"
-                            ><img
-                                    width="30"
-                                    src="{{ asset('assets/images/icons/whatsapp.svg') }}"
-                                    alt="Whatsapp"
-                                /></a>
-                        </li>
-                        <li>
-                            <a href="https://instagram.com/daralmhara?igshid=ZDdkNTZiNTM="
-                               target="_blank"
-                            ><img
-                                    width="30"
-                                    src="{{asset('assets/images/icons/instagram.svg')}}"
-                                    alt="Instagram"
-                                /></a>
-                        </li>
+                    
+                        @endforeach
+                      
                     </ul>
                 </div>
             </div>
@@ -102,7 +88,7 @@
                 <ul class="info">
                     <li>
                         <p class="mb-0 fs-md fw-bold text-main">
-                            خصم 25% لفترة محدودة على جميع الخدمات
+                            {!!$discount->body !!}
                         </p>
                     </li>
                 </ul>

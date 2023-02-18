@@ -46,6 +46,15 @@ class ServicesController extends Controller
             $this->uploadOne($image, $folder, 'public', $name);
 
         }
+        if($request->hasfile('icon_image'))
+        {
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'assets/images/icons/';
+            $iconfilePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+
+        }
 
         $url = str_replace([' ', '_'], "-", $request->url);
 
@@ -57,8 +66,9 @@ class ServicesController extends Controller
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
             'keywords' => $request->keywords,
+            'icon_image_alt'=>$request->icon_image_alt,
             'url' => $url,
-        ] + ["image"  =>  $filePath ?? ""]);
+        ] + ["image"  =>  $filePath ?? "",'icon_image'=>$iconfilePath] );
 
         return redirect()->back()->with('success','تم اضافه المقال');
     }
@@ -93,10 +103,22 @@ class ServicesController extends Controller
             
             $image = $request->file('image');
             $name = Str::slug($request->input('name')).'_'.time();
-            $folder = 'uploads/articles/';
+            $folder = 'uploads/services/';
             $filePath = $name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $folder, 'public', $name);
         
+        }
+
+        if($request->hasfile('icon_image'))
+        {
+            $oldiconImagePath = public_path().'/assets/images/icons/'. $service->icon_image;
+            unlink($oldiconImagePath);
+            $image = $request->file('image');
+            $name = Str::slug($request->input('name')).'_'.time();
+            $folder = 'assets/images/icons/';
+            $iconfilePath = $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+
         }
 
         $url = str_replace([' ', '_'], "-", $request->url);
@@ -110,7 +132,7 @@ class ServicesController extends Controller
             'meta_description' => $request->meta_description,
             'keywords' => $request->keywords,
             'url' => $url,
-            ] + ["image"  =>  $filePath ?? $service->image]
+            ] + ["image"  =>  $filePath ?? $service->image,'icon_image'=>$iconfilePath]
         );
 
         return redirect(route('admin.services.show'))->with('success','تم التعديل بنجاح');
@@ -119,6 +141,20 @@ class ServicesController extends Controller
 
     public function delete($service_id) {
         $service = Service::findOrFail($service_id);
+
+        if($service->image != null)
+        {
+            $oldImagePath = public_path().'/uploads/services/'. $service->image;
+            unlink($oldImagePath);
+
+        }
+
+        if($service->icon_image !=null)
+        {
+            $oldiconImagePath = public_path().'/assets/images/icons/'. $service->icon_image;
+            unlink($oldiconImagePath);
+        }
+        
         $service->delete();
 
         return redirect(route('admin.services.show'))->with('تم الحذف بنجاح');

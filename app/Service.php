@@ -17,6 +17,8 @@ class Service extends Model
         'meta_title',
         'meta_description',
         'keywords',
+        'icon_image',
+        'icon_image_alt',
         'url',
     ];
 }

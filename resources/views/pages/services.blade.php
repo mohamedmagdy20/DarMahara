@@ -55,7 +55,7 @@
                         <div class="inner-box">
                             <figure class="image-box">
                                 <a href="{{ '/services/' . $service->url }}"
-                                ><img src="{{ $service->image }}" alt="{{ $service->image_alt }}"
+                                ><img src="{{url('uploads/services'.'/'.$service->image)}}" alt="{{ $service->image_alt }}"
                                     /></a>
                             </figure>
                             <div class="lower-content">

@@ -48,8 +48,7 @@
                         <div class="widget-content">
                             <div class="text">
                                 <p class="fs-md">
-                                    نحن نقدم جميع أنواع خدمات نقل الأثاث في جميع أنحاء قطر
-                                    مثل الدوحة ولوسيل.
+                                  {!! $about->body !!}
                                 </p>
                             </div>
                             <figure class="footer-logo">

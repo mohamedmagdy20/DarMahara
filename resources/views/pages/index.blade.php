@@ -1,9 +1,9 @@
-@extends('master')
+@extends('master',['about'=>$about,'icons'=>$icons,'discount'=>$discount])
 
 @section('title_and_meta')
     <title>دار المهارة لأعمال التنظيف | الصفحة الرئيسية</title>
     <meta name="description" content="دار المهارة هي شركة مختصة بالتنظيفات العامة ومكافحة الحشرات في قطر"/>
-    <meta name="keywords" content="التنظيفات,مكافحة الحشرات,تنظيف الفيلات الجديدة,مكافحة النمل الأبيض,جلى الرخام,غسيل الكنب,غسيل السجاد,غسيل خزان المياه,دار المهارة,دار المهاره,أعمال التنظيف,تنظيف,المهارة"/>
+    <meta name="keywords" content="التنظيفات,مكافحة الحشرات,تنظيف الفيلات الجديدة,مكافحة النمل الأبيض,جلى الرخام,غسيل الكنب,غسيل السجاد,غسيل خزان المياه,دار المهارة,دار المهاره,أعمال التنظيف,تنظيف,المهارة ,{{$about->keywords}}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="دار المهارة لأعمال التنظيف | الصفحة الرئيسية"/>
     <meta property="og:description"
@@ -449,7 +449,7 @@
                             <div class="image-box">
                                 <figure class="image" style="width: 100%; height: 200px; object-fit: contain">
                                     <a href="{{route('article', $article->url)}}">
-                                        <img src="{{asset('assets/uploads/articles'."/".$article->image)}}" alt="{{$article->alt_image}}"/>
+                                        <img src="{{asset('uploads/articles'."/".$article->image)}}" alt="{{$article->alt_image}}"/>
                                     </a>
                                 </figure>
                             </div>

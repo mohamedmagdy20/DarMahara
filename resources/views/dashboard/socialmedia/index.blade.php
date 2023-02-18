@@ -53,9 +53,9 @@
 				<td> {{ $key+1}} </td>
 				<td> {{ $s->link }} </td>
 				<td>
-                    {{-- <div class="w-25"> --}}
-                        <img src="{{url('assets/images/icons/'.$s->image)}}" class="w-50" alt="">
-                    {{-- </div> --}}
+                    <div class="w-25 text-center">
+                        <img src="{{url('assets/images/icons/'.$s->image)}}" class="w-100" alt="">
+                    </div>
                 </td>
                 <td>
                     {{$s->image_alt}}
