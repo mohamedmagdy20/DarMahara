@@ -49,3 +49,9 @@
   </div>
 @endsection
 
+@section('script')
+<script>
+    CKEDITOR.replace( 'text-area');
+</script>
+
+@endsection

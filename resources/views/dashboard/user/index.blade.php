@@ -6,7 +6,7 @@
 
 
 <div class="row ">
-    <div class="col-lg-6 m-auto">
+    <div class="col-lg-6 m-auto text-center">
         <div class="card"><br><br>
 <center>
             <img class="rounded-circle avatar-xl" src="{{url('assets/backend/image/no_image.png') }}" alt="Card image cap">
@@ -23,7 +23,7 @@
     </div> 
                             
         
-                        </div> 
+</div> 
 
 
 </div>

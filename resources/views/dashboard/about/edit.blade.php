@@ -60,3 +60,17 @@
   </div>
 @endsection
 
+@section('script')
+<script>
+    CKEDITOR.replace( 'text-area');
+</script>
+
+<script>
+    new TomSelect("#input-tags",{
+    persist: false,
+    createOnBlur: true,
+    create: true
+    });
+</script>
+@endsection
+
