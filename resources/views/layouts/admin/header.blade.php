@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="{{route('admin.index')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo.webp') }}" alt="logo-sm" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="{{route('admin.index')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo.webp') }}" alt="logo-sm-light" height="22">
                     </span>
@@ -44,10 +44,14 @@ data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 </button>
 <div class="dropdown-menu dropdown-menu-end">
 <!-- item-->
-<a class="dropdown-item" href=""><i class="ri-user-line align-middle me-1"></i>@lang('lang.profile')</a>
+<a class="dropdown-item" href="{{route('admin.profile.index')}}"><i class="ri-user-line align-middle me-1"></i>حسابك</a>
 <div class="dropdown-divider"></div>
 
-<a class="dropdown-item text-danger" href=""><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
+<a class="dropdown-item text-danger" href="{{route('logout')}}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
+  
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
 </div>
 </div>
 <div class="dropdown d-none d-lg-inline-block ms-1">

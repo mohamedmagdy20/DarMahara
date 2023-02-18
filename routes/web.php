@@ -1,12 +1,13 @@
 <?php
-
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Dashboard\ArticlesController;
 use App\Http\Controllers\Dashboard\ServicesController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\AboutController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
-
+use App\Http\Controllers\Dashboard\MessageController;
+use App\Http\Controllers\Dashboard\ProfileController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -65,5 +66,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/social/store',[SocialMediaController::class,'store'])->name('admin.social.store');
         Route::post('/social/update',[SocialMediaController::class,'update'])->name('admin.social.update');
         Route::get('/social/delete/{id}',[SocialMediaController::class,'delete'])->name('admin.social.delete');
+
+        Route::get('/message',[MessageController::class,'index'])->name('admin.message.index');
+
+
+        Route::get('/profile',[ProfileController::class,'index'])->name('admin.profile.index');
+        Route::get('/profile/edit',[ProfileController::class,'edit'])->name('admin.profile.edit');
+        Route::post('/profile/update',[ProfileController::class,'update'])->name('admin.profile.update');
+
     });
 });

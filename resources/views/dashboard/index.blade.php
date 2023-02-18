@@ -30,12 +30,12 @@
         <div class="d-flex">
             <div class="flex-grow-1">
                 <p class="text-truncate font-size-14 mb-2">المقالات</p>
-                <h4 class="mb-2">5</h4>
+                <h4 class="mb-2">{{$article}}</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-primary rounded-3">
                     <span class="material-icons-sharp">
-                        directions_boat
+                        article
                         </span>
                 </span>
             </div>
@@ -48,13 +48,13 @@
     <div class="card-body">
         <div class="d-flex">
             <div class="flex-grow-1">
-                <p class="text-truncate font-size-14 mb-2">العناوين</p>
-                <h4 class="mb-2">4</h4>
+                <p class="text-truncate font-size-14 mb-2">الرسائل</p>
+                <h4 class="mb-2">{{$message}}</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-success rounded-3">
                     <span class="material-icons-sharp">
-                        houseboat
+                        mail
                         </span>
                 </span>
             </div>
@@ -68,7 +68,7 @@
         <div class="d-flex">
             <div class="flex-grow-1">
                 <p class="text-truncate font-size-14 mb-2">المشرفين</p>
-                <h4 class="mb-2">1</h4>
+                <h4 class="mb-2">{{$user}}</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -85,12 +85,12 @@
         <div class="d-flex">
             <div class="flex-grow-1">
                 <p class="text-truncate font-size-14 mb-2">الخدمات</p>
-                <h4 class="mb-2">4</h4>
+                <h4 class="mb-2">{{$service}}</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-light text-success rounded-3">
                     <span class="material-symbols-sharp">
-                        forklift
+                        design_services
                         </span>
                 </span>
             </div>
